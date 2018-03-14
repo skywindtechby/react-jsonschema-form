@@ -35,13 +35,13 @@ function ArrayFieldDescription({ DescriptionField, idSchema, description }) {
 }
 
 function IconBtn(props) {
-  const { type = "default", icon, className, ...otherProps } = props;
+  const { type = "secondary", icon, className, ...otherProps } = props;
   return (
     <button
       type="button"
       className={`btn btn-${type} ${className}`}
       {...otherProps}>
-      <i className={`glyphicon glyphicon-${icon}`} />
+      <span className={`oi oi-${icon}`} />
     </button>
   );
 }
@@ -55,19 +55,19 @@ function DefaultArrayItem(props) {
     fontWeight: "bold",
   };
   return (
-    <div key={props.index} className={props.className}>
-      <div className={props.hasToolbar ? "col-xs-9" : "col-xs-12"}>
+    <div key={props.index} className={`row ${props.className}`}>
+      <div className={props.hasToolbar ? "col-sm-9" : "col-sm-12"}>
         {props.children}
       </div>
 
       {props.hasToolbar && (
-        <div className="col-xs-3 array-item-toolbox">
+        <div className="col-sm-3 array-item-toolbox">
           <div
             className="btn-group"
             style={{ display: "flex", justifyContent: "space-around" }}>
             {(props.hasMoveUp || props.hasMoveDown) && (
               <IconBtn
-                icon="arrow-up"
+                icon="arrow-thick-top"
                 className="array-item-move-up"
                 tabIndex="-1"
                 style={btnStyle}
@@ -78,7 +78,7 @@ function DefaultArrayItem(props) {
 
             {(props.hasMoveUp || props.hasMoveDown) && (
               <IconBtn
-                icon="arrow-down"
+                icon="arrow-thick-bottom"
                 className="array-item-move-down"
                 tabIndex="-1"
                 style={btnStyle}
@@ -92,7 +92,7 @@ function DefaultArrayItem(props) {
             {props.hasRemove && (
               <IconBtn
                 type="danger"
-                icon="remove"
+                icon="x"
                 className="array-item-remove"
                 tabIndex="-1"
                 style={btnStyle}
@@ -127,7 +127,7 @@ function DefaultFixedArrayFieldTemplate(props) {
       )}
 
       <div
-        className="row array-item-list"
+        className="array-item-list"
         key={`array-item-list-${props.idSchema.$id}`}>
         {props.items && props.items.map(DefaultArrayItem)}
       </div>
@@ -165,7 +165,7 @@ function DefaultNormalArrayFieldTemplate(props) {
       )}
 
       <div
-        className="row array-item-list"
+        className="array-item-list"
         key={`array-item-list-${props.idSchema.$id}`}>
         {props.items && props.items.map(p => DefaultArrayItem(p))}
       </div>
@@ -655,11 +655,11 @@ class ArrayField extends Component {
 function AddButton({ onClick, disabled }) {
   return (
     <div className="row">
-      <p className="col-xs-3 col-xs-offset-9 array-item-add text-right">
+      <p className="col-sm-3 offset-9 array-item-add text-right">
         <IconBtn
           type="info"
           icon="plus"
-          className="btn-add col-xs-12"
+          className="btn-add col-sm-12"
           tabIndex="0"
           onClick={onClick}
           disabled={disabled}

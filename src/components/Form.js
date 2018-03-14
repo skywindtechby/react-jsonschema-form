@@ -182,13 +182,30 @@ export default class Form extends Component {
       enctype,
       acceptcharset,
       noHtml5Validate,
+      schemaOnly,
     } = this.props;
 
     const { schema, uiSchema, formData, errorSchema, idSchema } = this.state;
     const registry = this.getRegistry();
     const _SchemaField = registry.fields.SchemaField;
 
-    return (
+    return schemaOnly ? (
+      <div>
+        {this.renderErrors()}
+        <_SchemaField
+          schema={schema}
+          uiSchema={uiSchema}
+          errorSchema={errorSchema}
+          idSchema={idSchema}
+          formData={formData}
+          onChange={this.onChange}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+          registry={registry}
+          safeRenderCompletion={safeRenderCompletion}
+        />
+      </div>
+    ) : (
       <form
         className={className ? className : "rjsf"}
         id={id}

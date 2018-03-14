@@ -52,7 +52,7 @@ function Label(props) {
     return <div />;
   }
   return (
-    <label className="control-label" htmlFor={id}>
+    <label className="form-control-label" htmlFor={id}>
       {label}
       {required && <span className="required">{REQUIRED_FIELD_SYMBOL}</span>}
     </label>

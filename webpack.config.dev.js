@@ -44,6 +44,10 @@ module.exports = {
           path.join(__dirname, "playground"),
           path.join(__dirname, "node_modules"),
         ],
+      },
+      {
+        test: /\.(eot|woff|woff2|svg|ttf|otf)([\?]?.*)$/,
+        loader: "file-loader"
       }
     ]
   }

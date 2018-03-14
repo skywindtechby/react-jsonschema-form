@@ -3,9 +3,9 @@ import React from "react";
 export default function ErrorList(props) {
   const { errors } = props;
   return (
-    <div className="panel panel-danger errors">
-      <div className="panel-heading">
-        <h3 className="panel-title">Errors</h3>
+    <div className="card bg-danger text-white errors">
+      <div className="card-header">
+        <h3 className="card-title">Errors</h3>
       </div>
       <ul className="list-group">
         {errors.map((error, i) => {
